@@ -1,0 +1,11 @@
+Back End:
+-Find a recipe database to work with
+    - pull the data from database and decide what data is needed.
+    - design models around the needed data
+    -seed data to mongodb using new models
+    -confirm data has been seeded
+-generate controllers for the data(more on this later)
+-generate full CRUD using Express.js Methods
+-generate routes for Express and neccessary queries
+-ensure that routes work
+-apply apidocs to API/database
