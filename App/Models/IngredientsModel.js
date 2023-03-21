@@ -14,6 +14,7 @@ const Recipe = new Schema({
   description: String,
   components: [String],
   cook_time_minutes: Number,
+  img: String,
 });
 
 export default mongoose.model("Recipe", Recipe);
