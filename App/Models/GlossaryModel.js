@@ -10,7 +10,7 @@ const Groceries = new Schema(
     checked: Boolean,
     recipe: { type: Schema.Types.ObjectId, ref: "Recipe" },
   },
-  { timeStamp: true }
+  { timestamps: true }
 );
 
 export default mongoose.model("Groceries", Groceries);
