@@ -20,6 +20,8 @@ axios
   .then(function (response) {
     // console.log(response.data.results);
     const result = [];
+    if (response.data.results ===null) {
+      throw new Error("No recipes found");}else{
     response.data.results.forEach((d) => {
       //   const data = {};
       //   data.name = d.name;
@@ -59,6 +61,7 @@ axios
     console.log(result[0].instruction[0])
     console.log(result[0].instruction[1])
     return recipes.create(result);
+  }
   })
   .catch(function (error) {
     console.log(error);
