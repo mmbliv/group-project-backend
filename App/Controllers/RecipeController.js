@@ -1,6 +1,6 @@
 import recipes from "../Models/IngredientsModel.js"
 
-const findRecipe = async () => {
+const findAllRecipes = async () => {
     return await recipes.find()
 }
 
@@ -8,7 +8,7 @@ const findRecipeById = async (id) => {
     return await recipes.findById(id)
 }
 
-const findRecipebyName = async (name) => {
+const findRecipeByName = async (name) => {
     return await recipes.findOne({ name })
 }
 
@@ -24,4 +24,4 @@ const deleteRecipe = async (id) => {
     return await recipes.findByIdAndDelete(id)
 }
 
-export default { findRecipe, findRecipeById, findRecipebyName, updateRecipe, createRecipe, deleteRecipe }
+export default { findAllRecipes, findRecipeById, findRecipeByName, updateRecipe, createRecipe, deleteRecipe }
