@@ -46,7 +46,7 @@ axios
         });
         d.sections.forEach((d) => {
           d.components.forEach((d) => {
-            components.push(d.raw_text);
+            components.push(d.ingredient.name);
           });
         });
         data.instruction = instructionArray;
