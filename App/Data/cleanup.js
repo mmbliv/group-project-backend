@@ -37,7 +37,7 @@ axios
         const components = [];
         const instructionArray = [];
         data.name = d.name;
-        data.img = d.beauty_url;
+        data.img = d.thumbnail_url;
         data.cook_time_minutes = d.cook_time_minutes;
         d.instructions.forEach((d) => {
           const instructionObj = {};
@@ -55,7 +55,9 @@ axios
         result.push(data);
       });
     });
-    console.log(result);
+    // console.log(result);
+    console.log(result[0].instruction[0])
+    console.log(result[0].instruction[1])
     return recipes.create(result);
   })
   .catch(function (error) {
