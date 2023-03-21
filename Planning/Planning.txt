@@ -9,3 +9,12 @@ Back End:
 -generate routes for Express and neccessary queries
 -ensure that routes work
 -apply apidocs to API/database
+
+
+Controllers:
+-Find all recipes hard maybe
+-find recipes by name or Id
+-update recipes/components/instructions/image/etc
+-delete a recipe
+-post new recipes
+
