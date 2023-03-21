@@ -1,5 +1,5 @@
 import { timeStamp } from "console";
-import mongoose from "mongoose";
+import mongoose from "../db/connections.js";
 const Schema = mongoose.Schema;
 
 const Groceries = new Schema(

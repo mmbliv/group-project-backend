@@ -1,4 +1,5 @@
 import axios from "axios";
+import recipes from "../Models/IngredientsModel.js"
 
 const API_URL = "https://tasty.p.rapidapi.com/recipes/list";
 
@@ -55,7 +56,10 @@ axios
       });
     });
     console.log(result);
+    return recipes.create(result);
   })
   .catch(function (error) {
     console.log(error);
   });
+
+  
