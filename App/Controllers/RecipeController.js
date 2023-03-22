@@ -31,13 +31,11 @@ const recipeControllers = {
     },
     deleteRecipe: async (req, res) => {    
         const id = req.params.id
-    
         recipes.findByIdAndDelete(id)
         .then (recipe => {
             res.json(recipe)
-        
-    })
-}
+        })
+    }
 }
 
 export default recipeControllers
