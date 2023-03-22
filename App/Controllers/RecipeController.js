@@ -1,40 +1,55 @@
 import recipes from "../Models/IngredientsModel.js"
 
 const recipeControllers = {
-    getAllRecipes: async (req, res) => {
-        recipes.find({}).then(recipe => {
+    getAllRecipes: async (req, res, next) => {
+        recipes.find({})
+        .then(recipe => {
             res.json(recipe)
         })
+        .catch(err => next(err))
+
     },
-    findRecipeById: async (req, res) => {
+    findRecipeById: async (req, res, next) => {
         const id = req.params.id
-        recipes.findById(id).then(recipe => {
+        recipes.findById(id)
+        .then(recipe => {
             res.json(recipe)
         })
+        .catch(err => next(err))
     },
-    findRecipeByName: async (req, res) => {
+    findRecipeByName: async (req, res, next) => {
         const name = req.params.name
-        recipes.find({name}).then(recipe => {
+        recipes.find({name})
+        .then(recipe => {
             res.json(recipe)
         })
+        .catch(err => next(err))
     },
-    createRecipe: async (req, res) => {
-        const newRecipe = await recipes.create(req.body)
-        res.json(newRecipe)
+    createRecipe: async (req, res, next) => {
+        recipes.create(req.body)
+        .then(recipe => {
+            res.json(recipe)
+        })
+        .catch(err => next(err))
+        // const newRecipe = await recipes.create(req.body)
+        // res.json(newRecipe)
+        // .catch(err => next(err))
     },
-    updateRecipe: async (req, res) => {
+    updateRecipe: async (req, res, next) => {
         const id = req.params.id
         recipes.findByIdAndUpdate(id, req.body, {new:true})
         .then(recipe => {
             res.json(recipe)
-    })
+        })
+        .catch(err => next(err))
     },
-    deleteRecipe: async (req, res) => {    
+    deleteRecipe: async (req, res, next) => {    
         const id = req.params.id
         recipes.findByIdAndDelete(id)
         .then (recipe => {
             res.json(recipe)
         })
+        .catch (err => next(err))
     }
 }
 
