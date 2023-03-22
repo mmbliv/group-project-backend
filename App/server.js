@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use("recipes", recipeRouter);
+app.use("/recipes", recipeRouter);
 
 app.use(errorHandler);
 
