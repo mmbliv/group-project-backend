@@ -1,4 +1,5 @@
 import recipes from "../Models/IngredientsModel.js";
+import path from "path";
 
 const recipeControllers = {
     getAllRecipes: async (req, res) => {
@@ -13,14 +14,24 @@ const recipeControllers = {
         })
     },
     findRecipeByName: async (req, res) => {
-        const name = req.params.name
-        recipes.find({name}).then(recipe => {
+        const query = {name: new RegExp(req.params.name)}
+        recipes.findOne(query).then(recipe => {
             res.json(recipe)
         })
     },
     createRecipe: async (req, res) => {
-        const newRecipe = await recipes.create(req.body)
+        try {
+        //setting img to req.file.path according to multer documentation
+        const img = req.file.path;
+        //destructuring params from req.body to call on new img
+        const  {name, description, instruction, components, cook_time_minutes} = req.body;
+        const newRecipe = await recipes.create({name, description, instruction, components, cook_time_minutes, img})
+        console.log(newRecipe)
         res.json(newRecipe)
+        }catch (error) {
+            console.log(error)
+        }
+        //maybe need to add error handling here**
     },
     updateRecipe: async (req, res) => {
         const id = req.params.id
