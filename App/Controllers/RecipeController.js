@@ -13,8 +13,8 @@ const recipeControllers = {
         })
     },
     findRecipeByName: async (req, res) => {
-        const name = req.params.name
-        recipes.find({name}).then(recipe => {
+        const query = {name: new RegExp(req.params.name)}
+        recipes.findOne(query).then(recipe => {
             res.json(recipe)
         })
     },
