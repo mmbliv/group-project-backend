@@ -1,5 +1,7 @@
 import express from 'express';
 import recipeControllers from '../Controllers/RecipeController.js';
+import multer from'multer';
+import path from 'path';
 // import recipes from '../Controllers/RecipeController.js'
 
 
@@ -37,10 +39,23 @@ const recipeRouter = express.Router();
     
 // }    
 
+
+//storage for multer
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null,'uploads/',)
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + file.originalname);
+    },
+  });
+  
+  const uploadImage = multer({ storage: storage });
+
 recipeRouter.get('/', recipeControllers.getAllRecipes);
 recipeRouter.get('/name/:name', recipeControllers.findRecipeByName);
 recipeRouter.get('/:id', recipeControllers.findRecipeById);
-recipeRouter.post('/', recipeControllers.createRecipe);
+recipeRouter.post('/newRecipe', recipeControllers.createRecipe, uploadImage.single('image'));
 recipeRouter.put('/:id', recipeControllers.updateRecipe);
 recipeRouter.delete('/:id', recipeControllers.deleteRecipe);
 
