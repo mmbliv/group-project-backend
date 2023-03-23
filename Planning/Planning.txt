@@ -21,3 +21,5 @@ Controllers:
 
 server.js
 -need to make server to use controllers and routes
+    -need to make an error handler/helper
+    
