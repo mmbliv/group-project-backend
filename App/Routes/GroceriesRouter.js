@@ -1,4 +1,4 @@
-import groceriesController from "../Controllers/GroceriesControllers";
+import groceriesController from "../Controllers/GroceriesControllers.js";
 import express from 'express'
 
 const groceriesRouter = express.Router();
