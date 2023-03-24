@@ -2,8 +2,6 @@ import express from 'express';
 import recipeControllers from '../Controllers/RecipeController.js';
 import multer from'multer';
 import path from 'path';
-// import recipes from '../Controllers/RecipeController.js'
-
 
 const recipeRouter = express.Router();
 
@@ -55,7 +53,7 @@ const storage = multer.diskStorage({
 recipeRouter.get('/', recipeControllers.getAllRecipes);
 recipeRouter.get('/name/:name', recipeControllers.findRecipeByName);
 recipeRouter.get('/:id', recipeControllers.findRecipeById);
-recipeRouter.post('/newRecipe', recipeControllers.createRecipe, uploadImage.single('image'));
+recipeRouter.post('/newRecipe', uploadImage.single('img'), recipeControllers.createRecipe);
 recipeRouter.put('/:id', recipeControllers.updateRecipe);
 recipeRouter.delete('/:id', recipeControllers.deleteRecipe);
 

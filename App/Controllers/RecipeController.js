@@ -1,5 +1,6 @@
 import recipes from "../Models/IngredientsModel.js";
 import path from "path";
+import multer from "multer";
 
 const recipeControllers = {
     getAllRecipes: async (req, res) => {
