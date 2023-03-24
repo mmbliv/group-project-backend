@@ -22,10 +22,13 @@ const recipeControllers = {
     createRecipe: async (req, res) => {
         try {
         //setting img to req.file.path according to multer documentation
-        const img = req.file.path;
+        const imgUpload = req.file.path;
         //destructuring params from req.body to call on new img
-        const  {name, description, instruction, components, cook_time_minutes} = req.body;
-        const newRecipe = await recipes.create({name, description, instruction, components, cook_time_minutes, img})
+        const bodyData = {
+            ...req.body,
+            img: imgUpload
+        }
+        const newRecipe = await recipes.create(bodyData)
         console.log(newRecipe)
         res.json(newRecipe)
         }catch (error) {
