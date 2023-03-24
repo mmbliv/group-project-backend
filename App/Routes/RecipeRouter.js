@@ -2,51 +2,32 @@ import express from 'express';
 import recipeControllers from '../Controllers/RecipeController.js';
 import multer from'multer';
 import path from 'path';
+import fs from 'fs';
 
 const recipeRouter = express.Router();
 
-// const getAllRecipes = async (req, res, next) => {
-//     recipes.findAllRecipes(req.body)
-//     .then(recipe => res.json(recipe))
-//     .catch(err => next(err));
-// }
-
-// const getRecipebyName = async (req, res, next) => {
-//     recipes.findRecipeByName(req.params.name)
-//    .then(recipe => res.json(recipe))
-// }
-
-// const getRecipeById = async (req, res, next) => {
-//     recipes.findRecipeById(req.params.id)
-//     .then(recipe => res.json(recipe))
-// }
-
-// const createRecipe = async (req, res, next) => {
-//     recipes.createRecipe(req.body,)
-//   .then(recipe => res.json(recipe))
-//  }
-
-//  const updateRecipe = async (req, res, next) => {
-//     recipes.updateRecipe(req.params.id, req.body)
-//    .then(recipe => res.json(recipe))
-//  }
-
-// const deleteRecipe = async (req, res, next) => {
-//     recipes.deleteRecipe(req.params.id, req.body)
-//   .then(recipe => res.json(recipe))
-    
-// }    
-
-
 //storage for multer
+
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null,'uploads/',)
+        cb(null,'./uploads',)
     },
     filename: function (req, file, cb) {
       cb(null, Date.now() + file.originalname);
     },
   });
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     const dir = './uploads';
+//     if (!fs.existsSync(dir)) {
+//       fs.mkdirSync(dir);
+//     }
+//     cb(null, dir);
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, new Date().toISOString() + '-' + file.originalname);
+//   },
+// });
   
   const uploadImage = multer({ storage: storage });
 
