@@ -1,45 +1,46 @@
 import express from 'express';
 import recipeControllers from '../Controllers/RecipeController.js';
-import multer from'multer';
-import path from 'path';
-import fs from 'fs';
+import recipes from '../Controllers/RecipeController.js'
+
 
 const recipeRouter = express.Router();
 
-//storage for multer
+// const getAllRecipes = async (req, res, next) => {
+//     recipes.findAllRecipes(req.body)
+//     .then(recipe => res.json(recipe))
+//     .catch(err => next(err));
+// }
 
-const storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null,'uploads/',)
-    },
-    filename: function (req, file, cb) {
-      cb(null, Date.now() + extname(file.originalname));
-    },
-  });
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     const dir = './uploads';
-//     if (!fs.existsSync(dir)) {
-//       fs.mkdirSync(dir);
-//     }
-//     cb(null, dir);
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, new Date().toISOString() + '-' + file.originalname);
-//   },
-// });
-  
-  const uploadImage = multer({ 
-    storage: storage,
-    limits: { fileSize: 20000000}
-    })
+// const getRecipebyName = async (req, res, next) => {
+//     recipes.findRecipeByName(req.params.name)
+//    .then(recipe => res.json(recipe))
+// }
 
+// const getRecipeById = async (req, res, next) => {
+//     recipes.findRecipeById(req.params.id)
+//     .then(recipe => res.json(recipe))
+// }
 
+// const createRecipe = async (req, res, next) => {
+//     recipes.createRecipe(req.body,)
+//   .then(recipe => res.json(recipe))
+//  }
+
+//  const updateRecipe = async (req, res, next) => {
+//     recipes.updateRecipe(req.params.id, req.body)
+//    .then(recipe => res.json(recipe))
+//  }
+
+// const deleteRecipe = async (req, res, next) => {
+//     recipes.deleteRecipe(req.params.id, req.body)
+//   .then(recipe => res.json(recipe))
+    
+// }    
 
 recipeRouter.get('/', recipeControllers.getAllRecipes);
 recipeRouter.get('/name/:name', recipeControllers.findRecipeByName);
 recipeRouter.get('/:id', recipeControllers.findRecipeById);
-recipeRouter.post('/newRecipes', uploadImage.single('image'), recipeControllers.createRecipe);
+recipeRouter.post('/', recipeControllers.createRecipe);
 recipeRouter.put('/:id', recipeControllers.updateRecipe);
 recipeRouter.delete('/:id', recipeControllers.deleteRecipe);
 
