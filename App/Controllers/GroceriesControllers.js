@@ -1,4 +1,5 @@
 import Groceries from "../Models/Groceries.js";
+import Recipe from "../Models/IngredientsModel.js";
 
 const groceriesController = {
     getAllGroceries: async (req, res) => {
@@ -7,8 +8,13 @@ const groceriesController = {
     },
     getGroceries: async (req, res) => {
         const id = req.params.id;
-        Groceries.findById(id)
-      .then(groceries => res.json(groceries))
+        const groceries = await Groceries.find(id).populate('Recipe')
+        .then(groceries => res.json(groceries))
+    },
+    getRecipebyGroceries: async (req, res) => {
+    const groceries = await Groceries.find().populate('Recipe');
+    const recipe = groceries.map((grocery) => grocery.Recipe);
+    res.json(recipe)
     },
     createGroceries: async (req, res) => {
         const newGroceries = new Groceries(req.body);
