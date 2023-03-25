@@ -9,8 +9,10 @@ const groceriesController = {
     Groceries.findById(id).then((groceries) => res.json(groceries));
   },
   createGroceries: async (req, res) => {
-    const newGroceries = new Groceries(req.body);
-    res.json(newGroceries);
+    const data = await Groceries.create(req.body);
+    res.json(data);
+    // const newGroceries = new Groceries(req.body);
+    // res.json(newGroceries);
   },
   deleteGroceries: async (req, res) => {
     const id = req.params.id.then((groceries) => res.json(groceries));
