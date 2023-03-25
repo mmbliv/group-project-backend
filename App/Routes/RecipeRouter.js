@@ -10,10 +10,10 @@ const recipeRouter = express.Router();
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cb(null,'./uploads',)
+        cb(null,'uploads/',)
     },
     filename: function (req, file, cb) {
-      cb(null, Date.now() + file.originalname);
+      cb(null, Date.now() + extname(file.originalname));
     },
   });
 // const storage = multer.diskStorage({
@@ -29,12 +29,17 @@ const storage = multer.diskStorage({
 //   },
 // });
   
-  const uploadImage = multer({ storage: storage });
+  const uploadImage = multer({ 
+    storage: storage,
+    limits: { fileSize: 20000000}
+    })
+
+
 
 recipeRouter.get('/', recipeControllers.getAllRecipes);
 recipeRouter.get('/name/:name', recipeControllers.findRecipeByName);
 recipeRouter.get('/:id', recipeControllers.findRecipeById);
-recipeRouter.post('/newRecipe', uploadImage.single('img'), recipeControllers.createRecipe);
+recipeRouter.post('/newRecipes', uploadImage.single('image'), recipeControllers.createRecipe);
 recipeRouter.put('/:id', recipeControllers.updateRecipe);
 recipeRouter.delete('/:id', recipeControllers.deleteRecipe);
 

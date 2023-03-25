@@ -23,24 +23,26 @@ const recipeControllers = {
     createRecipe: async (req, res) => {
         // const { name, ingredients, instructions, components, description, cook_time_minutes } = req.body;
         // const img = req.file.path;
-        const imgUpload =req.file.path;
+        console.log(req.file)
+        const imgUpload =req.body.file;
         const bodyData = {
             ...req.body,
             img: imgUpload
         }
         try {
-        const newRecipe = await recipes.create({
-            name,
-            ingredients,
-            instructions,
-            components,
-            description,
-            cook_time_minutes,
-            img,
-        })
-        console.log(newRecipe)
-        res.json(newRecipe)
-        }catch (error) {
+            console.log(req.file)
+        const newRecipe = await recipes.create(bodyData)
+            // name,
+            // ingredients,
+            // instructions,
+            // components,
+            // description,
+            // cook_time_minutes,
+            // img,
+
+            console.log(newRecipe)
+            res.json(newRecipe)
+        } catch (error) {
             console.log(error)
         }
         //maybe need to add error handling here**
