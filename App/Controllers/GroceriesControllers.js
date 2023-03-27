@@ -8,7 +8,7 @@ const groceriesController = {
     },
     getGroceries: async (req, res) => {
         const id = req.params.id;
-        Groceries.findById(id)
+        Groceries.findById(id).populate('recipe')
       .then(groceries => res.json(groceries))
     },
     createGroceries: async (req, res) => {
