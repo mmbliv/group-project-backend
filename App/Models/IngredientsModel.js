@@ -9,7 +9,7 @@ const Instruction = new Schema({
 //   type: { type: String, enum: ["Easy", "Medium", "Difficulty"] },
 // });
 const Recipe = new Schema({
-  name: [String],
+  name: String,
   instruction: [Instruction],
   description: [String],
   components: [String],

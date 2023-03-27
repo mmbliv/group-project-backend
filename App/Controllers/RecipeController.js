@@ -1,67 +1,40 @@
 import recipes from "../Models/IngredientsModel.js";
-import path from "path";
-import multer from "multer";
 
 const recipeControllers = {
-    getAllRecipes: async (req, res) => {
-        recipes.find({}).then(recipe => {
-            res.json(recipe)
-        })
-    },
-    findRecipeById: async (req, res) => {
-        const id = req.params.id
-        recipes.findById(id).then(recipe => {
-            res.json(recipe)
-        })
-    },
-    findRecipeByName: async (req, res,) => {
-        const query = {name: new RegExp(req.params.name)}
-        recipes.findOne(query).then(recipe => {
-            res.json(recipe)
-        })
-    },
-    createRecipe: async (req, res) => {
-        // const { name, ingredients, instructions, components, description, cook_time_minutes } = req.body;
-        // const img = req.file.path;
-        console.log(req.file)
-        const imgUpload =req.body.file;
-        const bodyData = {
-            ...req.body,
-            img: imgUpload
-        }
-        try {
-            console.log(req.file)
-        const newRecipe = await recipes.create(bodyData)
-            // name,
-            // ingredients,
-            // instructions,
-            // components,
-            // description,
-            // cook_time_minutes,
-            // img,
-
-            console.log(newRecipe)
-            res.json(newRecipe)
-        } catch (error) {
-            console.log(error)
-        }
-        //maybe need to add error handling here**
-    },
-    updateRecipe: async (req, res) => {
-        const id = req.params.id
-        recipes.findByIdAndUpdate(id, req.body, {new:true})
-        .then(recipe => {
-            res.json(recipe)
-    })
-    },
-    deleteRecipe: async (req, res) => {    
-        const id = req.params.id
-        recipes.findByIdAndDelete(id)
-        .then (recipe => {
-            res.json(recipe)
-        })
-    }
-}
+  getAllRecipes: async (req, res) => {
+    recipes.find({}).then((recipe) => {
+      res.json(recipe);
+    });
+  },
+  findRecipeById: async (req, res) => {
+    const id = req.params.id;
+    recipes.findById(id).then((recipe) => {
+      res.json(recipe);
+    });
+  },
+  findRecipeByName: async (req, res) => {
+    const name = req.params.name;
+    recipes.find({ name }).then((recipe) => {
+      res.json(recipe);
+    });
+  },
+  createRecipe: async (req, res) => {
+    const newRecipe = await recipes.create(req.body);
+    res.json(newRecipe);
+  },
+  updateRecipe: async (req, res) => {
+    const id = req.params.id;
+    recipes.findByIdAndUpdate(id, req.body, { new: true }).then((recipe) => {
+      res.json(recipe);
+    });
+  },
+  deleteRecipe: async (req, res) => {
+    const id = req.params.id;
+    recipes.findByIdAndDelete(id).then((recipe) => {
+      res.json(recipe);
+    });
+  },
+};
 
 export default recipeControllers;
 

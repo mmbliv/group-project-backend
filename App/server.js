@@ -3,7 +3,7 @@ import cors from "cors";
 import errorHandler from "./Helpers/errorHandler.js";
 import recipeRouter from "./Routes/RecipeRouter.js";
 import groceriesRouter from "./Routes/GroceriesRouter.js";
-import multer from "multer";
+// import multer from "multer";
 
 const app = express();
 
@@ -13,9 +13,10 @@ const corsOption = {
   optionSuccessStatus: 200,
 };
 
+
 app.use(cors(corsOption));
 
-app.use(multer().any());
+// app.use(multer().any)
 
 app.use(express.json());
 
