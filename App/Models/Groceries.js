@@ -8,7 +8,7 @@ const Groceries = new Schema(
     //   created_at: Date,
     deleted: Boolean,
     checked: Boolean,
-    recipe: { type: Schema.Types.String, ref: "Recipe" },
+    recipe: String,
   },
   { timestamps: true }
 );
