@@ -10,6 +10,8 @@ Back End:
 -ensure that routes work
 -apply apidocs to API/database
 
+-need to write a seed data to mongodb for recipes.
+
 
 Controllers:
 -Find all recipes hard maybe
@@ -19,5 +21,9 @@ Controllers:
 -post new recipes
 
 
+-add groceries controllers that can reference recipes
+
 server.js
 -need to make server to use controllers and routes
+    -need to make an error handler/helper
+    

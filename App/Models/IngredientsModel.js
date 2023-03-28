@@ -11,7 +11,7 @@ const Instruction = new Schema({
 const Recipe = new Schema({
   name: String,
   instruction: [Instruction],
-  description: String,
+  description: [String],
   components: [String],
   cook_time_minutes: Number,
   img: String,

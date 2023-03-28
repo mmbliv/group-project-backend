@@ -16,8 +16,10 @@ const recipeControllers = {
     });
   },
   findRecipeByName: async (req, res) => {
-    const name = req.params.name;
-    recipes.find({ name }).then((recipe) => {
+    const nameParam = req.params.name;
+    //sets name to lowercase when searching for recipe
+    const name = new RegExp(nameParam, "i");
+    recipes.find({ name: name }).then((recipe) => {
       res.json(recipe);
     });
   },
