@@ -23,6 +23,13 @@ const recipeControllers = {
       res.json(recipe);
     });
   },
+  redirectToRecipe: async (req, res) => {
+    const nameParam = req.params.name;
+    const name = new RegExp(nameParam, "i");
+    recipes.findOne({ name: name }).then((recipe) => {
+      res.json(recipe);
+    });
+  },
   createRecipe: async (req, res) => {
     console.log(req.file);
     const newRecipe = await recipes.create(req.body);
