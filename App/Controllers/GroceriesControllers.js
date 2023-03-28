@@ -31,6 +31,14 @@ const groceriesController = {
     });
     res.json(updatedData);
   },
+  updateDelete: async (req, res) => {
+    const id = req.params.id;
+    const data = await Groceries.findById(id);
+    const updatedData = await Groceries.findByIdAndUpdate(id, {
+      deleted: !data.deleted,
+    });
+    res.json(updatedData);
+  },
 };
 
 export default groceriesController;
