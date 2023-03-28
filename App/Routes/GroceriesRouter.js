@@ -9,5 +9,7 @@ groceriesRouter.get("/recipe/:id", groceriesController.getRecipebyGrocery);
 groceriesRouter.post("/", groceriesController.createGroceries);
 groceriesRouter.put("/:id", groceriesController.updateGroceries);
 groceriesRouter.delete("/:id", groceriesController.deleteGroceries);
+groceriesRouter.put("/check/:id", groceriesController.updateCheck);
+groceriesRouter.put("/delete/:id", groceriesController.updateDelete);
 
 export default groceriesRouter;

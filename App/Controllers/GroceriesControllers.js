@@ -2,6 +2,23 @@ import Groceries from "../Models/Groceries.js";
 import Recipe from "../Models/IngredientsModel.js"
 
 const groceriesController = {
+
+  updateCheck: async (req, res) => {
+    const id = req.params.id;
+    const data = await Groceries.findById(id);
+    const updatedData = await Groceries.findByIdAndUpdate(id, {
+      checked: !data.checked,
+    });
+    res.json(updatedData);
+  },
+  updateDelete: async (req, res) => {
+    const id = req.params.id;
+    const data = await Groceries.findById(id);
+    const updatedData = await Groceries.findByIdAndUpdate(id, {
+      deleted: !data.deleted,
+    });
+    res.json(updatedData);
+  },
     getAllGroceries: async (req, res) => {
         Groceries.find()
         .then(groceries => res.json(groceries))
