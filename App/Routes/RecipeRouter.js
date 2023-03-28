@@ -1,7 +1,10 @@
-import express from 'express';
-import recipeControllers from '../Controllers/RecipeController.js';
-import recipes from '../Controllers/RecipeController.js'
-
+import express from "express";
+import recipeControllers from "../Controllers/RecipeController.js";
+import recipes from "../Controllers/RecipeController.js";
+import multer from "multer";
+const upload = multer({
+  dest: "uploads/",
+});
 
 const recipeRouter = express.Router();
 
@@ -34,15 +37,14 @@ const recipeRouter = express.Router();
 // const deleteRecipe = async (req, res, next) => {
 //     recipes.deleteRecipe(req.params.id, req.body)
 //   .then(recipe => res.json(recipe))
-    
-// }    
 
-recipeRouter.get('/', recipeControllers.getAllRecipes);
-recipeRouter.get('/name/:name', recipeControllers.findRecipeByName);
-recipeRouter.get('/:id', recipeControllers.findRecipeById);
-recipeRouter.post('/', recipeControllers.createRecipe);
-recipeRouter.put('/:id', recipeControllers.updateRecipe);
-recipeRouter.delete('/:id', recipeControllers.deleteRecipe);
+// }
 
+recipeRouter.get("/", recipeControllers.getAllRecipes);
+recipeRouter.get("/name/:name", recipeControllers.findRecipeByName);
+recipeRouter.get("/:id", recipeControllers.findRecipeById);
+recipeRouter.post("/", recipeControllers.createRecipe);
+recipeRouter.put("/:id", recipeControllers.updateRecipe);
+recipeRouter.delete("/:id", recipeControllers.deleteRecipe);
 
 export default recipeRouter;

@@ -1,5 +1,8 @@
 import recipes from "../Models/IngredientsModel.js";
-
+import multer from "multer";
+const upload = multer({
+  dest: "uploads/",
+});
 const recipeControllers = {
   getAllRecipes: async (req, res) => {
     recipes.find({}).then((recipe) => {
@@ -19,6 +22,7 @@ const recipeControllers = {
     });
   },
   createRecipe: async (req, res) => {
+    console.log(req.file);
     const newRecipe = await recipes.create(req.body);
     res.json(newRecipe);
   },
