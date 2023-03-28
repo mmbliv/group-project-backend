@@ -5,7 +5,7 @@ const groceriesRouter = express.Router();
 
 groceriesRouter.get("/", groceriesController.getAllGroceries);
 groceriesRouter.get("/:id", groceriesController.getGroceries);
-groceriesRouter.get("/recipe", groceriesController.getRecipebyGroceries);
+groceriesRouter.get("/recipe/:id", groceriesController.getRecipebyGrocery);
 groceriesRouter.post("/", groceriesController.createGroceries);
 groceriesRouter.put("/:id", groceriesController.updateGroceries);
 groceriesRouter.delete("/:id", groceriesController.deleteGroceries);
