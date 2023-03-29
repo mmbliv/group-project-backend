@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const Groceries = new Schema(
   {
     name: String,
-    //   created_at: Date,
     deleted: Boolean,
     checked: Boolean,
     recipe: String,

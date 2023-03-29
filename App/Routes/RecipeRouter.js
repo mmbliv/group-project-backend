@@ -8,7 +8,6 @@ const upload = multer({
 
 const recipeRouter = express.Router();
 
-
 recipeRouter.get("/", recipeControllers.getAllRecipes);
 recipeRouter.get("/name/:name", recipeControllers.findRecipeByName);
 recipeRouter.get("/redirect/:name", recipeControllers.redirectToRecipe);

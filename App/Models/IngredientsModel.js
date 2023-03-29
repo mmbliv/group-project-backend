@@ -5,9 +5,8 @@ const Instruction = new Schema({
   position: Number,
   display_text: String,
 });
-// const Tag = new Schema({
-//   type: { type: String, enum: ["Easy", "Medium", "Difficulty"] },
-// });
+
+
 const Recipe = new Schema({
   name: String,
   instruction: [Instruction],
