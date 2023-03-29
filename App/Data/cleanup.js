@@ -18,23 +18,11 @@ const Options = {
 axios
   .request(Options)
   .then(function (response) {
-    // console.log(response.data.results);
     const result = [];
     if (response.data.results === null) {
       throw new Error("No recipes found");
     } else {
       response.data.results.forEach((d) => {
-        //   const data = {};
-        //   data.name = d.name;
-        //   data.description = d.description;
-        //   console.log(d.instructions);
-        //   d.recipes.forEach((d) => {
-        //     instructionObj.position = d.position;
-        //     instructionObj.display_text = d.display_text;
-        //     instructionArray.push(instructionObj);
-        //   });
-        //   data.instructions = instructionArray;
-        //   result.push(data);
         if (d.recipes) {
           d.recipes.forEach((d) => {
             const data = {};
@@ -79,7 +67,6 @@ axios
           });
         }
       });
-      // console.log(result);
       console.log(result[0].instruction[0]);
       console.log(result[0].instruction[1]);
       return recipes.create(result);
