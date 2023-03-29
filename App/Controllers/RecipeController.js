@@ -84,30 +84,3 @@ const recipeControllers = {
 
 export default recipeControllers;
 
-// const findAllRecipes = async () => {
-//     return await recipes.find()
-// }
-
-// const findRecipeById = async (id) => {
-//     return await recipes.findById(id)
-// }
-
-// const findRecipeByName = async (name) => {
-//     return await recipes.find({name})
-// }
-
-// const updateRecipe = async (id, updatedRecipe) => {
-
-//     return await recipes.findByIdAndUpdate(id, updatedRecipe, {new: true})
-// }
-
-// // const createRecipe = async (req, res) => {
-// //     const newRecipe = await recipes.create(req.body)
-// //     return newRecipe
-// // }
-
-// const deleteRecipe = async (id) => {
-//     return await recipes.findByIdAndDelete(id)
-// }
-
-// export default { findAllRecipes, findRecipeById, findRecipeByName, updateRecipe, createRecipe, deleteRecipe }gi
