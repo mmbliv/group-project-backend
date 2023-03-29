@@ -88,6 +88,7 @@ recipeRouter.get("/", recipeControllers.getAllRecipes);
  * @apiSuccess {String} img Image URL for the recipe
  * @apiSuccess {Number} __v MongoDb V Number
  * 
+ * @apiSampleRequest /recipes/name/:name
  * 
  * @apiSuccessExample Successfull Response
  * [
@@ -156,6 +157,7 @@ recipeRouter.get("/redirect/:name", recipeControllers.redirectToRecipe);
  * @apiSuccess {String} img Image URL for the recipe
  * @apiSuccess {Number} __v MongoDb V Number
  * 
+ * @apiSampleRequest /recipes/:id
  * 
  * @apiSuccessExample Successfull Response
  * [
