@@ -4,84 +4,107 @@ import Recipe from "../Models/IngredientsModel.js"
 const groceriesController = {
 
   updateCheck: async (req, res) => {
+    try{
     const id = req.params.id;
     const data = await Groceries.findById(id);
     const updatedData = await Groceries.findByIdAndUpdate(id, {
-      checked: !data.checked,
+    checked: !data.checked,
     });
     res.json(updatedData);
+  }catch(err){
+    console.log(err);
+    res.status(500).json(err);
+    }
   },
   updateDelete: async (req, res) => {
+    try{
     const id = req.params.id;
     const data = await Groceries.findById(id);
     const updatedData = await Groceries.findByIdAndUpdate(id, {
       deleted: !data.deleted,
     });
     res.json(updatedData);
+    } catch(err){
+    console.log(err);
+    res.status(500).json(err);
+  }
   },
     getAllGroceries: async (req, res) => {
-        Groceries.find()
-        .then(groceries => res.json(groceries))
+      try{
+       const groceries = await Groceries.find();
+       res.json(groceries);
+      } catch(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
     },
     getGroceries: async (req, res) => {
+      try{
         const id = req.params.id;
         Groceries.findById(id)
-          .populate("recipe", "name")
-          .then(groceries => res.json(groceries))
-      },
+        //   .populate("recipe", "name")
+        res.json(groceries);
+      }catch(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
+    },
       //the controller below works in postman, will return a recipe from a grocery list
       //use the groceryId to get the recipe
     getRecipebyGrocery: async (req, res) => {
+      try{
         const id = req.params.id;
-
         //finding the groceries by id
-        Groceries.findById(id)
-            .populate("recipe")
-            .then((groceries) => {
+        const groceries = await Groceries.findById(id).populate("recipe");
             if (!groceries) {
                 return res.status(404).json({ message: "Groceries not found" });
             }
             //finding the recipe associated with groceries based off of groceries.recipe.id
-            Recipe.findById(groceries.recipe._id)
-                .then((recipe) => {
+            const recipe = await Recipe.findById(groceries.recipe._id)
                 if (!recipe) {
 
                     //return errors if no recipe is found
                     return res.status(404).json({ message: "Recipe not found" });
                 }
                 res.json(recipe);
-                })
-        // errpr handlers
-                .catch((err) => {
-                console.error(err);
-                res.status(500).json({ message: "Server error" });
-                });
-            })
-            .catch((err) => {
-            console.error(err);
-            res.status(500).json({ message: "Server error" });
-            });
+                } catch(err){
+                  console.log(err);
+                  res.status(500).json(err);
+              }
         },
     createGroceries: async (req, res) => {
+      try{
         const { name, recipe } = req.body;
         const newGroceries = await Groceries.create({ name, recipe })
         const populatedGroceries =await newGroceries
         .populate("recipe", "name components")
-        console.log(populatedGroceries.recipe.name)
-        console.log(populatedGroceries.recipe.components)
         res.json(populatedGroceries);
+      }catch(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
     },
     deleteGroceries: async (req, res) => {
+      try{
         const id = req.params.id
-        Groceries.findByIdAndDelete(id)
+        const groceries = await Groceries.findByIdAndDelete(id)
         .then(groceries => res.json(groceries))
+      }catch(err){
+        console.log(err);
+        res.status(500).json(err);
+      }
     },
     updateGroceries: async (req, res) => {
+      try {
         const id = req.params.id
         Groceries.findByIdAndUpdate(id, req.body)
         .then(groceries => {res.json(groceries
         )})
+    }catch(err){
+      console.log(err);
+      res.status(500).json(err);
     }
-};
+  }
+}
 
 export default groceriesController;
