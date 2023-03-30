@@ -86,8 +86,6 @@ const recipeControllers = {
     const id = req.params.id;
     try {
       const data = await recipes.findById(id);
-      console.log(data.like);
-      console.log(!data.like);
       const updatedData = await recipes.findByIdAndUpdate(id, {
         like: !data.like,
       });
