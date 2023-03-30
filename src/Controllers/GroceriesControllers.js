@@ -75,7 +75,9 @@ const groceriesController = {
       const { name, recipe } = req.body;
       const data = await Groceries.findOne({ name: name });
       if (data) {
-        res.json({ message: `You already have ${name} in your groceries` });
+        res
+          .status(400)
+          .json({ message: `You already have ${name} in your groceries` });
       } else {
         const newGroceries = await Groceries.create({ name, recipe });
         res.json(newGroceries);
