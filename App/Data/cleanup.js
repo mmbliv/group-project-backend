@@ -8,7 +8,7 @@ const API_URL = "https://tasty.p.rapidapi.com/recipes/list";
 const Options = {
   method: "GET",
   url: API_URL,
-  params: { from: "0", size: "3" },
+  params: { from: "0", size: "1" },
   headers: {
     "x-rapidapi-host": "tasty.p.rapidapi.com",
     "x-rapidapi-key": "88a962e218msh4aefd9f72da1e14p1d0786jsn10daadfe2f1c",

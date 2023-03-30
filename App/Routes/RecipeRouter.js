@@ -15,5 +15,6 @@ recipeRouter.get("/:id", recipeControllers.findRecipeById);
 recipeRouter.post("/", recipeControllers.createRecipe);
 recipeRouter.put("/:id", recipeControllers.updateRecipe);
 recipeRouter.delete("/:id", recipeControllers.deleteRecipe);
+recipeRouter.put("/like/:id", recipeControllers.updataLikeStatus);
 
 export default recipeRouter;
