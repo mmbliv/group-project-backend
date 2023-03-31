@@ -12,7 +12,6 @@ const corsOption = {
   optionSuccessStatus: 200,
 };
 
-
 app.use(cors(corsOption));
 
 app.use(express.json());
@@ -23,6 +22,6 @@ app.use("/groceries", groceriesRouter);
 
 app.use(errorHandler);
 
-app.listen(4000, () => {
+app.listen(8080, () => {
   console.log("listening");
 });
