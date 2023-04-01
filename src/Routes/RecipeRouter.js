@@ -11,10 +11,10 @@ const recipeRouter = express.Router();
 
 /**
  * @api {get} /recipes Get All Recipes
- * 
+ *
  * @apiName GetAllRecipes
  * @apiGroup GetRecipes
- * 
+ *
  * @apiSuccess {String} _id Recipe Id
  * @apiSuccess {String} name Recipe Name
  * @apiSuccess {Obejct[]} instructions Instructions for the recipe
@@ -23,8 +23,8 @@ const recipeRouter = express.Router();
  * @apiSuccess {Number} cook_time_minutes Cook time for the recipe
  * @apiSuccess {String} img Image URL for the recipe
  * @apiSuccess {Number} __v MongoDb V Number
- * 
- * 
+ *
+ *
  * @apiSuccessExample Successfull Response
  * [
  *   {
@@ -55,7 +55,7 @@ const recipeRouter = express.Router();
  *          "position": 5,
  *          "display_text": "Enjoy!",
  *          "_id": "6423536e95b6cf5919b62446"
- *       
+ *
  *     ],
  *     "description": null,
  *     "components": [
@@ -76,9 +76,9 @@ recipeRouter.get("/", recipeControllers.getAllRecipes);
  * @api {get} /recipes/name/:name Get Recipe by name
  * @apiName GetRecipeByName
  * @apiGroup GetRecipes
- * 
+ *
  * @apiParam {string} name The name of the recipe
- * 
+ *
  * @apiSuccess {String} _id Recipe Id
  * @apiSuccess {String} name Recipe Name
  * @apiSuccess {Obejct[]} instructions Instructions for the recipe
@@ -87,9 +87,9 @@ recipeRouter.get("/", recipeControllers.getAllRecipes);
  * @apiSuccess {Number} cook_time_minutes Cook time for the recipe
  * @apiSuccess {String} img Image URL for the recipe
  * @apiSuccess {Number} __v MongoDb V Number
- * 
+ *
  * @apiSampleRequest /recipes/name/:name
- * 
+ *
  * @apiSuccessExample Successfull Response
  * [
  *   {
@@ -120,7 +120,7 @@ recipeRouter.get("/", recipeControllers.getAllRecipes);
  *          "position": 5,
  *          "display_text": "Enjoy!",
  *          "_id": "6423536e95b6cf5919b62446"
- *       
+ *
  *     ],
  *     "description": null,
  *     "components": [
@@ -137,17 +137,15 @@ recipeRouter.get("/", recipeControllers.getAllRecipes);
 
 recipeRouter.get("/name/:name", recipeControllers.findRecipeByName);
 
-
-
 recipeRouter.get("/redirect/:name", recipeControllers.redirectToRecipe);
 
 /**
  * @api {get} /recipes/:id Get Recipe by id
  * @apiName GetRecipeById
  * @apiGroup GetRecipes
- * 
+ *
  * @apiParam {string} _id The id of the recipe
- * 
+ *
  * @apiSuccess {String} _id Recipe Id
  * @apiSuccess {String} name Recipe Name
  * @apiSuccess {Obejct[]} instructions Instructions for the recipe
@@ -156,9 +154,9 @@ recipeRouter.get("/redirect/:name", recipeControllers.redirectToRecipe);
  * @apiSuccess {Number} cook_time_minutes Cook time for the recipe
  * @apiSuccess {String} img Image URL for the recipe
  * @apiSuccess {Number} __v MongoDb V Number
- * 
+ *
  * @apiSampleRequest /recipes/:id
- * 
+ *
  * @apiSuccessExample Successfull Response
  * [
  *   {
@@ -189,7 +187,7 @@ recipeRouter.get("/redirect/:name", recipeControllers.redirectToRecipe);
  *          "position": 5,
  *          "display_text": "Enjoy!",
  *          "_id": "6423536e95b6cf5919b62446"
- *       
+ *
  *     ],
  *     "description": null,
  *     "components": [
@@ -204,21 +202,20 @@ recipeRouter.get("/redirect/:name", recipeControllers.redirectToRecipe);
  * ]
  */
 
-
 recipeRouter.get("/:id", recipeControllers.findRecipeById);
 
 /**
  * @api {post} /recipes Add a Recipe
  * @apiName AddRecipe
  * @apiGroup AddRecipes
- * 
+ *
  * @apiParam {String} name Recipe Name, is required
  * @apiParam {Obejct[]} instructions Instructions for the recipe
  * @apiParam {String[]} description Description for the recipe
  * @apiParam {String[]} components Ingredients for the recipe
  * @apiParam {Number} cook_time_minutes Cook time for the recipe
  * @apiParam {String} img Image URL for the recipe
- * 
+ *
  * @apiParamExample Example Body:
  * {
  *  "name":"Test Name",
@@ -231,7 +228,7 @@ recipeRouter.get("/:id", recipeControllers.findRecipeById);
  *    "cook_time_minutes": 30,
  *    "img": "URL"
  *  }
- * 
+ *
  * @apiSuccess {Number} _id Recipe Id
  * @apiSuccess {String} name Recipe Name
  * @apiSuccess {Obejct[]} instructions Instructions for the recipe
@@ -240,7 +237,7 @@ recipeRouter.get("/:id", recipeControllers.findRecipeById);
  * @apiSuccess {Number} cook_time_minutes Cook time for the recipe
  * @apiSuccess {String} img Image URL for the recipe
  * @apiSuccess {Number} __v MongoDb V Number
- * 
+ *
  * @apiSuccessExample Add Recipe Success
  * {
  *  "name": "Test Name",
@@ -262,11 +259,12 @@ recipeRouter.get("/:id", recipeControllers.findRecipeById);
  *  "img": "URL",
  *  "_id": "6424b72e8663a1e784609cd9",
  *  "__v": 0
- * 
+ *
  */
 
 recipeRouter.post("/", recipeControllers.createRecipe);
 recipeRouter.put("/:id", recipeControllers.updateRecipe);
 recipeRouter.delete("/:id", recipeControllers.deleteRecipe);
+recipeRouter.put("/like/:id", recipeControllers.updataLikeStatus);
 
 export default recipeRouter;

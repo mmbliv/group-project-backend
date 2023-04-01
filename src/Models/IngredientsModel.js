@@ -6,7 +6,6 @@ const Instruction = new Schema({
   display_text: String,
 });
 
-
 const Recipe = new Schema({
   name: String,
   instruction: [Instruction],
@@ -14,6 +13,7 @@ const Recipe = new Schema({
   components: [String],
   cook_time_minutes: Number,
   img: String,
+  like: { type: Boolean, default: false },
 });
 
 export default mongoose.model("Recipe", Recipe);
