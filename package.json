@@ -9,6 +9,10 @@
     "start": "nodemon ./src/server.js",
     "docs": "apidoc ./Routes/ -e node_modules -o ./docs"
   },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -23,5 +27,8 @@
   "devDependencies": {
     "apidoc": "^0.54.0",
     "nodemon": "^2.0.21"
+  },
+  "engines": {
+    "node": "18.12.1"
   }
 }
