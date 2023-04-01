@@ -4,9 +4,9 @@
 
 ## Languages/Frameworks/Dependencies
 
-|Javascript| Install/version|
+|Name| Install/version|
 |----------|-------|
-
+|Javascript||
 |ExpressJS| ```npm i express```
 |MongoDB | Community 6.0|
 |Mongoose | ```npm i mongoose```|
