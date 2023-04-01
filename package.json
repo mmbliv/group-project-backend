@@ -6,9 +6,13 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/server.js",
+    "start": "node ./src/server.js",
     "docs": "apidoc ./Routes/ -e node_modules -o ./docs"
   },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -24,5 +28,8 @@
   "devDependencies": {
     "apidoc": "^0.54.0",
     "nodemon": "^2.0.21"
+  },
+  "engines": {
+    "node": "^19.8.1"
   }
 }
