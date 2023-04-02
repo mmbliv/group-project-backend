@@ -1,7 +1,6 @@
 // import mongoose from "mongoose";
-// console.log(process.env);
 // mongoose.connect(
-//   `mongodb+srv://mmbliv:${process.env.MONGODB_PASSWORD}@cluster0.3id8zfg.mongodb.net/?retryWrites=true&w=majority`,
+//   `mongodb+srv://mmbliv:@cluster0.3id8zfg.mongodb.net/?retryWrites=true&w=majority`,
 //   { useNewUrlParser: true, useUnifiedTopology: true }
 // );
 

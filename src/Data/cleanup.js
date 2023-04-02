@@ -14,7 +14,6 @@ const Options = {
     "x-rapidapi-key": "88a962e218msh4aefd9f72da1e14p1d0786jsn10daadfe2f1c",
   },
 };
-
 axios
   .request(Options)
   .then(function (response) {
@@ -67,9 +66,7 @@ axios
           });
         }
       });
-      console.log(result[0].instruction[0]);
-      console.log(result[0].instruction[1]);
-      return recipes.create(result);
+      recipes.create(result);
     }
   })
   .catch(function (error) {
